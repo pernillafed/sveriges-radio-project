@@ -15,9 +15,9 @@ const getProgramById = async (req, res) => {
 };
 
 const getProgramSchedule = async (req, res) => {
-    let programSchedule = await fetch(`http://api.sr.se/api/v2/scheduledepisodes?programid=${req.params.programId}&fromdate=2020-01-01&todate=${req.query.date}&${json}&${showAll}`);
+    let programSchedule = await fetch(`http://api.sr.se/api/v2/episodes/index?programid=${req.params.programId}&${json}&${showAll}`);
     programSchedule = await programSchedule.json();
-    res.json(programSchedule.schedule);
+    res.json(programSchedule.episodes);
 };
 
 module.exports = {
