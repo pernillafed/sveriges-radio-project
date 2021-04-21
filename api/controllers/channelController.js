@@ -5,7 +5,7 @@ const showAll = 'pagination=false';
 const getAllChannels = async (req, res) => {
     let channels = await fetch(`http://api.sr.se/api/v2/channels?${json}&${showAll}`);
     channels = await channels.json();
-    res.json(channels);
+    res.json(channels.channels);
 };
 
 const getChannelById = async (req, res) => {

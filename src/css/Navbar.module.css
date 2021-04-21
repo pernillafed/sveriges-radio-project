@@ -1,0 +1,64 @@
+.navbar {
+    border-bottom: 1px solid #bbb;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 5px 10px 0 10px;
+}
+
+.navbar h1 {
+    font-size: 5rem;
+}
+
+.dot {
+    color: #d40075;
+}
+
+.menu {
+    cursor: pointer;
+    font-size: 3rem;
+    align-self: center;
+    justify-self: center;
+    padding-top: 5px;
+}
+
+.pink {
+    color: #d40075;
+}
+
+.links {
+    padding: 15px 0 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.link {
+    width: 130px;
+    margin: 6px 5px;
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    text-align: center;
+}
+
+.link:hover {
+    color: #d40075;
+}
+
+.newBlogLink {
+    background-color: #d40075;
+    color: white;
+    width: 270px;
+    margin: 14px 0;
+}
+
+.newBlogLink:hover {
+    background-color: white;
+    color: #d40075;
+}
