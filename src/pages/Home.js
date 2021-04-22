@@ -1,14 +1,14 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 
-import { ChannelContext } from "../contexts/ChannelContext";
+// import { ChannelContext } from "../contexts/ChannelContext";
 
 function Home() {
 
-    const { channels } = useContext(ChannelContext);
+    // const { channels } = useContext(ChannelContext);
 
     return (
         <div className="container">
-            <h1>Home works</h1>
+            <h2>Radio för alla</h2>
         </div>
     );
 }

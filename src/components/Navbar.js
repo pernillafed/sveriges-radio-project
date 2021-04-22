@@ -13,7 +13,7 @@ function Navbar() {
 
     return (
         <div className={styles.navbar}>
-            <h1>radio<span className={styles.dot}>.</span></h1>
+            <h1><NavLink to="/">radio<span className={styles.dot}>.</span></NavLink></h1>
             <i onClick={handleClick} className={`fas fa-bars ${styles.menu} ${clicked && styles.pink}`}></i>
             {clicked && (
                 <div className={styles.links}>

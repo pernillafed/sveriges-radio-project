@@ -12,12 +12,12 @@ body {
     color: #222;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: 'Merriweather';
 }
 
 .container {
-    width: 80%;
-    margin: 50px auto;
+    width: 85%;
+    margin: 30px auto;
     font-family: 'Open Sans';
 }

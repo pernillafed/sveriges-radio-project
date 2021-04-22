@@ -1,0 +1,11 @@
+.channelWrapper {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
+    row-gap: 0.2%;
+}
+
+.channel img {
+    width: 100%;
+}
