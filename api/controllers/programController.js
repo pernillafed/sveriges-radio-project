@@ -5,7 +5,7 @@ const showAll = 'pagination=false';
 const getAllPrograms = async (req, res) => {
     let programs = await fetch(`http://api.sr.se/api/v2/programs?${json}&${showAll}`);
     programs = await programs.json();
-    res.json(programs);
+    res.json(programs.programs);
 };
 
 const getProgramById = async (req, res) => {

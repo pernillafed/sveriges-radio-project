@@ -1,0 +1,37 @@
+.programWrapper {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.program {
+    text-decoration: none;
+    color: #222;
+    display: grid;
+    grid-template-columns: 10% 88%;
+    column-gap: 2%;
+}
+
+.program img {
+    width: 100%;
+}
+
+.program h3 {
+    align-self: center;
+}
+
+.showMore {
+    margin: 10px 0;
+    outline: none;
+    color: #222;
+    background-color: white;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}

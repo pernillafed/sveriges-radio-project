@@ -1,7 +1,7 @@
 function Categories() {
     return (
         <div className="container">
-            <h1>Categories works</h1>
+            <h2>Kategorier</h2>
         </div>
     );
 }
