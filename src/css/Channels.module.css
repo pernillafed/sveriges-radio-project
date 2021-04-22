@@ -3,9 +3,24 @@
     display: grid;
     grid-template-columns: 48% 48%;
     column-gap: 4%;
-    row-gap: 0.2%;
+    row-gap: 5px;
 }
 
 .channel img {
     width: 100%;
+}
+
+.showMore {
+    margin: 10px 0;
+    outline: none;
+    color: #222;
+    background-color: white;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
