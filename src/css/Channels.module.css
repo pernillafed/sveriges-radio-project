@@ -8,6 +8,7 @@
 
 .channel img {
     width: 100%;
+    border-radius: 5px;
 }
 
 .showMore {
@@ -23,4 +24,9 @@
     box-shadow: 1px 1px 3px #999;
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+.showMore:hover {
+    cursor: pointer;
+    color: #d40075;
 }

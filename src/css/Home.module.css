@@ -1,0 +1,53 @@
+.contentWrapper {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 5px;
+}
+
+.contentWrappers {
+    margin-bottom: 25px;
+}
+
+.homeChannels {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    column-gap: 2%;
+    margin: 10px 0 2px 0;
+}
+
+.homePrograms, .homeCategories {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    column-gap: 2%;
+    row-gap: 6px;
+    margin: 10px 0 8px 0;
+}
+
+.homeChannel img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.homeProgram, .homeCategory {
+    text-decoration: none;
+    color: #222;
+    font-family: 'Merriweather';
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.goTo {
+    text-decoration: none;
+    color: #d40075;
+    font-weight: bold;
+}
+
+.arrowRight {
+    font-size: 0.9rem;
+    padding-left: 5px;
+}

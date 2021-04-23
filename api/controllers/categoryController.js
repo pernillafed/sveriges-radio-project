@@ -5,7 +5,7 @@ const showAll = 'pagination=false';
 const getAllCategories = async (req, res) => {
     let categories = await fetch(`http://api.sr.se/api/v2/programcategories?${json}&${showAll}`);
     categories = await categories.json();
-    res.json(categories);
+    res.json(categories.programcategories);
 };
 
 const getCategoryById = async (req, res) => {

@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChannelContext } from '../contexts/ChannelContext';
+import { ContentContext } from '../contexts/ContentContext';
 
 import styles from '../css/Channels.module.css';
 
 function Channels() {
 
-    const { channels } = useContext(ChannelContext);
+    const { channels } = useContext(ContentContext);
     const [showChannels, setShowChannels] = useState([]);
     const [number, setNumber] = useState(10);
 

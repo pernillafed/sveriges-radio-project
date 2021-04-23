@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ProgramContext } from '../contexts/ProgramContext';
+import { ContentContext } from '../contexts/ContentContext';
 
 import styles from '../css/Programs.module.css';
 
 function Programs() {
 
-    const { programs } = useContext(ProgramContext);
+    const { programs } = useContext(ContentContext);
     const [showPrograms, setShowPrograms] = useState([]);
     const [number, setNumber] = useState(20);
 

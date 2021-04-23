@@ -35,3 +35,8 @@
     grid-column-start: 1;
     grid-column-end: 2;
 }
+
+.showMore:hover {
+    cursor: pointer;
+    color: #d40075;
+}

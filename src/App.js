@@ -1,7 +1,6 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import ChannelContext from './contexts/ChannelContext';
-import ProgramContext from './contexts/ProgramContext';
+import ContentContext from './contexts/ContentContext';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -12,17 +11,15 @@ import Categories from './pages/Categories';
 function App() {
   return (
     <div className="App">
-      <ChannelContext>
-        <ProgramContext>
-          <BrowserRouter>
-            <Navbar />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/channels" component={Channels} />
-            <Route exact path="/programs" component={Programs} />
-            <Route exact path="/categories" component={Categories} />
-          </BrowserRouter>
-        </ProgramContext>
-      </ChannelContext>
+      <ContentContext>
+        <BrowserRouter>
+          <Navbar />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/channels" component={Channels} />
+          <Route exact path="/programs" component={Programs} />
+          <Route exact path="/categories" component={Categories} />
+        </BrowserRouter>
+      </ContentContext>
     </div>
   );
 }

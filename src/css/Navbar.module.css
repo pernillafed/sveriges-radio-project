@@ -1,5 +1,5 @@
 .navbar {
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid #ccc;
     display: grid;
     grid-template-columns: 70% 30%;
     padding: 5px 10px 0 10px;
@@ -48,12 +48,21 @@
     text-align: center;
 }
 
+.link:hover {
+    color: #d40075;
+}
+
 .newBlogLink {
     background-color: #d40075;
     color: white;
     grid-column-start: 1;
     grid-column-end: 3;
     margin: 8px 0 20px 0;
+}
+
+.newBlogLink:hover {
+    background-color: white;
+    color: #d40075;
 }
 
 .pink {
