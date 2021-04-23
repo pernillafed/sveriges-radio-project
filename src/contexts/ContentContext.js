@@ -8,6 +8,8 @@ const ContentContextProvider = (props) => {
     const [programs, setPrograms] = useState(null);
     const [categories, setCategories] = useState(null);
 
+    const [channel, setChannel] = useState(null);
+
     useEffect(() => {
         getAllChannels();
         getAllPrograms();
@@ -32,10 +34,18 @@ const ContentContextProvider = (props) => {
         setCategories(categories);
     };
 
+    const getChannelById = async (channelId) => {
+        let channel = await fetch(`/api/v1/channels/${channelId}`);
+        channel = await channel.json();
+        setChannel(channel);
+    }
+
     const values = {
         channels,
         programs,
-        categories
+        categories,
+        channel,
+        getChannelById
     };
 
     return (

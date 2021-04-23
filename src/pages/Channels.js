@@ -26,7 +26,7 @@ function Channels() {
             <h2>Kanaler</h2>
             <div className={styles.channelWrapper}>
                 {channels && showChannels.map(channel => (
-                    <Link to={`/channel/${channel.id}`} key={channel.id} className={styles.channel}>
+                    <Link to={`/channels/${channel.id}`} key={channel.id} className={styles.channel}>
                         {channel.image ? (
                                 <img src={channel.image} alt={channel.name} />
                             ) : (

@@ -11,7 +11,7 @@ const getAllChannels = async (req, res) => {
 const getChannelById = async (req, res) => {
     let channel = await fetch(`http://api.sr.se/api/v2/channels/${req.params.channelId}?${json}`);
     channel = await channel.json();
-    res.json(channel);
+    res.json(channel.channel);
 };
 
 const getChannelSchedule = async (req, res) => {
