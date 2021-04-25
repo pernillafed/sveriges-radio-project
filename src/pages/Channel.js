@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { ContentContext } from '../contexts/ContentContext';
+import { Link } from 'react-router-dom';
 
 import styles from '../css/Channel.module.css';
 
@@ -19,6 +20,7 @@ function Channel(props) {
                     <h2>{channel.name}</h2>
                     <img src={channel.image} alt={channel.name} />
                     <p>{channel.tagline}</p>
+                    <Link to={`/channels/schedule/${channelId}`}>Tablå</Link>
                 </div>
             )}
         </div>

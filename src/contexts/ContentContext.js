@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
+const prefixPath = "/api/v1";
+
 export const ContentContext = createContext();
 
 const ContentContextProvider = (props) => {
@@ -10,6 +12,8 @@ const ContentContextProvider = (props) => {
 
     const [channel, setChannel] = useState(null);
 
+    const [schedule, setSchedule] = useState(null);
+
     useEffect(() => {
         getAllChannels();
         getAllPrograms();
@@ -17,27 +21,33 @@ const ContentContextProvider = (props) => {
     }, []);
 
     const getAllChannels = async () => {
-        let channels = await fetch("/api/v1/channels");
+        let channels = await fetch(`${prefixPath}/channels`);
         channels = await channels.json();
         setChannels(channels);
     };
 
     const getAllPrograms = async () => {
-        let programs = await fetch("/api/v1/programs");
+        let programs = await fetch(`${prefixPath}/programs`);
         programs = await programs.json();
         setPrograms(programs);
     };
 
     const getAllCategories = async () => {
-        let categories = await fetch("/api/v1/categories");
+        let categories = await fetch(`${prefixPath}/categories`);
         categories = await categories.json();
         setCategories(categories);
     };
 
     const getChannelById = async (channelId) => {
-        let channel = await fetch(`/api/v1/channels/${channelId}`);
+        let channel = await fetch(`${prefixPath}/channels/${channelId}`);
         channel = await channel.json();
         setChannel(channel);
+    };
+
+    const getChannelSchedule = async (channelId) => {
+        let schedule = await fetch(`${prefixPath}/channels/schedule/${channelId}`);
+        schedule = await schedule.json();
+        setSchedule(schedule);
     }
 
     const values = {
@@ -45,7 +55,9 @@ const ContentContextProvider = (props) => {
         programs,
         categories,
         channel,
-        getChannelById
+        schedule,
+        getChannelById,
+        getChannelSchedule
     };
 
     return (
