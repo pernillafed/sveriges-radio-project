@@ -1,4 +1,45 @@
-.channelContent img {
+.contentWrapper {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 50px;
+}
+
+.channelInformation {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.channelInformation img {
     width: 100%;
-    margin: 15px 0 10px 0;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
+}
+
+.link {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    text-align: center;
+}
+
+.link:hover {
+    color: #d40075;
+}
+
+.scheduleContent {
+    margin: 15px 8px 10px 8px;
+}
+
+.scheduleContent p {
+    color: #d40075;
 }

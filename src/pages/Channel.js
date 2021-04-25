@@ -16,11 +16,18 @@ function Channel(props) {
     return (
         <div className="container">
             {channel && (
-                <div className={styles.channelContent}>
+                <div>
                     <h2>{channel.name}</h2>
-                    <img src={channel.image} alt={channel.name} />
-                    <p>{channel.tagline}</p>
-                    <Link to={`/channels/schedule/${channelId}`}>Tablå</Link>
+                    <div className={styles.contentWrapper}>
+                        <div className={styles.channelInformation}>
+                            <img src={channel.image} alt={channel.name} />
+                            <p>{channel.tagline}</p>
+                        </div>
+                        <div className={styles.links}>
+                            <Link to={`/channels/schedule/${channelId}`} className={styles.link}>Tablå</Link>
+                            <Link to={`/channels/programs/${channelId}`} className={styles.link}>Program</Link>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

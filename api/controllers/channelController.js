@@ -1,4 +1,6 @@
 const fetch = require('node-fetch');
+const utils = require("../core/utilities");
+
 const json = 'format=json';
 const showAll = 'pagination=false';
 
@@ -17,6 +19,13 @@ const getChannelById = async (req, res) => {
 const getChannelSchedule = async (req, res) => {
     let channelSchedule = await fetch(`http://api.sr.se/api/v2/scheduledepisodes?channelId=${req.params.channelId}&date=${req.query.date}&${json}&${showAll}`);
     channelSchedule = await channelSchedule.json();
+    channelSchedule.schedule = channelSchedule.schedule.map((obj) => {
+        return {
+            ...obj,
+            starttimeutc: utils.convertToDateObject(obj.starttimeutc),
+            endtimeutc: utils.convertToDateObject(obj.endtimeutc),
+        };
+    });
     res.json(channelSchedule.schedule);
 };
 

@@ -38,7 +38,7 @@ function Home() {
                     <h3>Kategorier</h3>
                     <div className={styles.homeCategories}>
                         {categories && categories.slice(0, 4).map(category => (
-                            <Link to={`/categories/${category.id}`} key={category.id} className={styles.homeCategory}>
+                            <Link to={`/categories/programs/${category.id}`} key={category.id} className={styles.homeCategory}>
                                 {category.name}
                             </Link>
                         ))}

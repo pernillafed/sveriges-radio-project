@@ -11,13 +11,13 @@ const getAllCategories = async (req, res) => {
 const getCategoryById = async (req, res) => {
     let category = await fetch(`http://api.sr.se/api/v2/programcategories/${req.params.categoryId}?${json}`);
     category = await category.json();
-    res.json(category);
+    res.json(category.programcategory);
 };
 
 const getProgramsByCategory = async (req, res) => {
     let programsInCategory = await fetch(`http://api.sr.se/api/v2/programs/index?programcategoryid=${req.params.categoryId}&${json}&${showAll}`);
     programsInCategory = await programsInCategory.json();
-    res.json(programsInCategory);
+    res.json(programsInCategory.programs);
 };
 
 module.exports = {

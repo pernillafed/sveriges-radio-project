@@ -30,15 +30,10 @@ function Programs() {
                             <img src={program.programimage} alt={program.name} />
                             <h3>{program.name}</h3>
                         </Link>
-                )).sort(function(a, b) {
-                    var x = a["name"];
-                    var y = b["name"];
-                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-                })}
+                ))}
                 {programs && showPrograms.length < programs.length && (
                         <button className={styles.showMore} onClick={handleClick}>Visa fler program</button>
-                    )
-                }
+                )}
             </div>
         </div>
     );

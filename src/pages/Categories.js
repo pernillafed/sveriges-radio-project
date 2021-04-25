@@ -13,7 +13,7 @@ function Categories() {
             <h2>Kategorier</h2>
             <div className={styles.categoryWrapper}>
                 {categories && categories.map(category => (
-                    <Link to={`/category/${category.id}`} key={category.id} className={styles.category}>
+                    <Link to={`/categories/programs/${category.id}`} key={category.id} className={styles.category}>
                         <h3>{category.name}</h3>
                     </Link>
                 ))}
