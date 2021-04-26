@@ -1,0 +1,38 @@
+.contentWrapper {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 50px;
+}
+
+.programInformation, .contact {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.programInformation img {
+    width: 100%;
+}
+
+.contact h3, .contact p {
+    text-align: center;
+}
+
+.contactInformation {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 15px;
+}
+
+.socialMediaLinks {
+    display: flex;
+    justify-content: center;
+}
+
+.socialMediaLinks a {
+    text-decoration: none;
+    color: #d40075;
+    font-size: 3rem;
+    margin: 0 5px;
+}

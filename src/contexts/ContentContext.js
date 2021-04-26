@@ -11,6 +11,7 @@ const ContentContextProvider = (props) => {
     const [categories, setCategories] = useState(null);
 
     const [channel, setChannel] = useState(null);
+    const [program, setProgram] = useState(null);
     const [category, setCategory] = useState(null);
 
     const [channelSchedule, setChannelSchedule] = useState(null);
@@ -23,6 +24,9 @@ const ContentContextProvider = (props) => {
         getAllPrograms();
         getAllCategories();
     }, []);
+
+
+    // GET ALL
 
     const getAllChannels = async () => {
         let channels = await fetch(`${prefixPath}/channels`);
@@ -42,10 +46,19 @@ const ContentContextProvider = (props) => {
         setCategories(categories);
     };
 
+
+    // GET BY ID
+
     const getChannelById = async (channelId) => {
         let channel = await fetch(`${prefixPath}/channels/${channelId}`);
         channel = await channel.json();
         setChannel(channel);
+    };
+
+    const getProgramById = async (programId) => {
+        let program = await fetch(`${prefixPath}/programs/${programId}`);
+        program = await program.json();
+        setProgram(program);
     };
     
     const getCategoryById = async (categoryId) => {
@@ -54,11 +67,17 @@ const ContentContextProvider = (props) => {
         setCategory(category);
     };
 
+
+    // GET SCHEDULE
+
     const getChannelSchedule = async (channelId) => {
         let schedule = await fetch(`${prefixPath}/channels/schedule/${channelId}`);
         schedule = await schedule.json();
         setChannelSchedule(schedule);
     };
+
+
+    // GET PROGRAMS
 
     const getProgramsByChannel = async (channelId) => {
         let programs = await fetch(`${prefixPath}/channels/programs/${channelId}`);
@@ -77,11 +96,13 @@ const ContentContextProvider = (props) => {
         programs,
         categories,
         channel,
+        program,
         category,
         channelSchedule,
         channelPrograms,
         categoryPrograms,
         getChannelById,
+        getProgramById,
         getCategoryById,
         getChannelSchedule,
         getProgramsByChannel,

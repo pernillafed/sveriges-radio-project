@@ -33,7 +33,7 @@ function CategoryPrograms(props) {
                 <div className={styles.programWrapper}>
                     <h2>{category.name}</h2>
                     {categoryPrograms && showPrograms.map(program => (
-                        <Link to={`/program/${program.id}`} key={program.id} className={styles.program}>
+                        <Link to={`/programs/${program.id}`} key={program.id} className={styles.program}>
                             <img src={program.programimage} alt={program.name} />
                             <h3>{program.name}</h3>
                         </Link>

@@ -25,7 +25,7 @@ function Navbar() {
                     <NavLink onClick={handleLinkClick} to="/channels" className={styles.link}>Kanaler</NavLink>
                     <NavLink onClick={handleLinkClick} to="/programs" className={styles.link}>Program</NavLink>
                     <NavLink onClick={handleLinkClick} to="/categories" className={styles.link}>Kategorier</NavLink>
-                    <NavLink onClick={handleLinkClick} to="/login" className={`${styles.link} ${styles.newBlogLink}`}>Logga in</NavLink>
+                    <NavLink onClick={handleLinkClick} to="/login" className={`${styles.link} ${styles.newBlogLink}`}>Logga in / Registrera</NavLink>
                 </div>
             )}
         </div>

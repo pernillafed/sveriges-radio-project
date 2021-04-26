@@ -26,7 +26,7 @@ function Programs() {
             <h2>Program</h2>
             <div className={styles.programWrapper}>
                 {programs && showPrograms.map(program => (
-                        <Link to={`/program/${program.id}`} key={program.id} className={styles.program}>
+                        <Link to={`/programs/${program.id}`} key={program.id} className={styles.program}>
                             <img src={program.programimage} alt={program.name} />
                             <h3>{program.name}</h3>
                         </Link>

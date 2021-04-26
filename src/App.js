@@ -9,6 +9,7 @@ import Channel from './pages/Channel';
 import ChannelSchedule from './pages/ChannelSchedule';
 import ChannelPrograms from './pages/ChannelPrograms';
 import Programs from './pages/Programs';
+import Program from './pages/Program';
 import Categories from './pages/Categories';
 import CategoryPrograms from './pages/CategoryPrograms';
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/channels/schedule/:channelId" component={ChannelSchedule} />
           <Route exact path="/channels/programs/:channelId" component={ChannelPrograms} />
           <Route exact path="/programs" component={Programs} />
+          <Route exact path="/programs/:programId" component={Program} />
           <Route exact path="/categories" component={Categories} />
           <Route exact path="/categories/programs/:categoryId" component={CategoryPrograms} />
         </BrowserRouter>
