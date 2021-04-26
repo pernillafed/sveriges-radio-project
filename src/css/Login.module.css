@@ -1,0 +1,53 @@
+.inputForm {
+    margin: 30px 0 20px 0;
+}
+
+.inputFields {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.inputFields input {
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    border: 1px solid #999;
+    outline: none;
+    border-radius: 20px;
+    font-family: 'Open Sans';
+}
+
+.inputFields input:focus {
+    box-shadow: 0 0 8px #d400757e;
+}
+
+.formBtn {
+    color: white;
+    margin: 25px 0;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    font-size: 1rem;
+    background-color: #d40075;
+}
+
+.formBtn:hover {
+    color: #d40075;
+    background-color: white;
+}
+
+.switchRouteLink {
+    text-align: center;
+}
+
+.switchRouteLink a {
+    text-decoration: none;
+    color: #d40075;
+    font-weight: bold;
+}

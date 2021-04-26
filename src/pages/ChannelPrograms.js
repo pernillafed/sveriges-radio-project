@@ -13,6 +13,7 @@ function ChannelPrograms(props) {
 
     useEffect(() => {
         getProgramsByChannel(channelId);
+        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {

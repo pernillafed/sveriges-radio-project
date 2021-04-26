@@ -11,6 +11,7 @@ function Channel(props) {
 
     useEffect(() => {
         getChannelById(channelId);
+        // eslint-disable-next-line
     }, []);
 
     return (

@@ -14,11 +14,7 @@ const db = new sqlite3.Database(path.join(__dirname, "../userDB.db"));
 // };
 
 const whoami = (req, res) => {
-    if (req.session.user) {
-        res.json({ loggedInUser: req.session.user });
-    } else {
-        res.send("No user logged in");
-    }
+    res.json(req.session.user || null);
 };
 
 const login = (req, res) => {  

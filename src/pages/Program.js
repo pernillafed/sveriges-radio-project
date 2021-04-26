@@ -10,6 +10,7 @@ function Program(props) {
 
     useEffect(() => {
         getProgramById(programId);
+        // eslint-disable-next-line
     }, []);
 
     return (

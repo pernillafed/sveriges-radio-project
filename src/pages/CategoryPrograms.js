@@ -14,6 +14,7 @@ function CategoryPrograms(props) {
     useEffect(() => {
         getCategoryById(categoryId);
         getProgramsByCategory(categoryId);
+        // eslint-disable-next-line
     }, []);
     
     useEffect(() => {

@@ -10,6 +10,7 @@ function ChannelSchedule(props) {
 
     useEffect(() => {
         getChannelSchedule(channelId);
+        // eslint-disable-next-line
     }, []);
 
     return (
