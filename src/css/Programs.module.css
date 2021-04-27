@@ -1,5 +1,5 @@
 .programWrapper {
-    margin-top: 15px;
+    margin: 15px 0;
     display: grid;
     grid-template-columns: 100%;
     row-gap: 10px;
@@ -40,4 +40,12 @@
 .showMore:hover {
     cursor: pointer;
     color: #d40075;
+}
+
+.goBack {
+    font-weight: bold;
+}
+
+.goBack i {
+    margin-right: 8px;
 }

@@ -13,7 +13,7 @@ import Programs from './pages/Programs';
 import Program from './pages/Program';
 import Categories from './pages/Categories';
 import CategoryPrograms from './pages/CategoryPrograms';
-import Whoami from './pages/Whoami';
+import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -33,7 +33,7 @@ function App() {
             <Route exact path="/programs/:programId" component={Program} />
             <Route exact path="/categories" component={Categories} />
             <Route exact path="/categories/programs/:categoryId" component={CategoryPrograms} />
-            <Route exact path="/users/whoami" component={Whoami} />
+            <Route exact path="/users/favorites" component={Favorites} />
             <Route exact path="/users/login" component={Login} />
             <Route exact path="/users/register" component={Register} />
           </BrowserRouter>

@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContentContext } from "../contexts/ContentContext";
+import { UserContext } from '../contexts/UserContext';
 
 import styles from '../css/Home.module.css';
 
 function Home() {
 
     const { channels, programs, categories } = useContext(ContentContext);
+    const { loggedInUser } = useContext(UserContext);
 
     return (
         <div className="container">
-            <h2>Radio för alla</h2>
+            {!loggedInUser ? <h2>Radio för alla</h2> : <h2>Hej {loggedInUser.firstName}!</h2>}
             <div className={styles.contentWrapper}>
                 <div className={styles.contentWrappers}>
                     <h3>Kanaler</h3>

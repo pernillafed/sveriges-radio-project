@@ -1,4 +1,5 @@
 import { useEffect, useContext } from 'react';
+import { useHistory } from 'react-router';
 import { ContentContext } from '../contexts/ContentContext';
 
 import styles from '../css/Channel.module.css';
@@ -7,6 +8,8 @@ function ChannelSchedule(props) {
 
     const { channelSchedule, getChannelSchedule } = useContext(ContentContext);
     const { channelId } = props.match.params;
+
+    const history = useHistory();
 
     useEffect(() => {
         getChannelSchedule(channelId);
@@ -22,6 +25,7 @@ function ChannelSchedule(props) {
                     <p>{episode.title}</p>
                 </div>
             ))}
+            <p onClick={() => history.goBack()} className={styles.goBack}><i className="fas fa-arrow-left"></i>Tillbaka</p>
         </div>
     );
 }

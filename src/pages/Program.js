@@ -1,23 +1,49 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
+import { useHistory } from 'react-router';
 import { ContentContext } from '../contexts/ContentContext';
+import { UserContext } from '../contexts/UserContext';
 
 import styles from '../css/Program.module.css';
 
 function Program(props) {
 
     const { program, getProgramById } = useContext(ContentContext);
+    const { loggedInUser } = useContext(UserContext);
     const { programId } = props.match.params;
+
+    const [inFavorites, setInFavorites] = useState(false);
+
+    const history = useHistory();
 
     useEffect(() => {
         getProgramById(programId);
         // eslint-disable-next-line
     }, []);
 
+    const addToFavorites = () => {
+        setInFavorites(true);
+    };
+
+    const removeFromFavorites = () => {
+        setInFavorites(false);
+    };
+
     return (
         <div className="container">
             {program && (
                 <div>
-                    <h2>{program.name}</h2>
+                    {!loggedInUser ? (
+                        <h2>{program.name}</h2>
+                    ) : (
+                        <div className={styles.loggedInHeading}>
+                            <h2>{program.name}</h2>
+                            {!inFavorites ? (
+                                <i className="far fa-heart" onClick={addToFavorites}></i>
+                            ) : (
+                                <i className="fas fa-heart" onClick={removeFromFavorites}></i>
+                            )}
+                        </div>
+                    )}
                     <div className={styles.contentWrapper}>
                         <div className={styles.programInformation}>
                             <img src={program.programimage} alt={program.name} />
@@ -44,6 +70,7 @@ function Program(props) {
                                 </div>
                             </div>
                         )}
+                        <p onClick={() => history.goBack()} className={styles.goBack}><i className="fas fa-arrow-left"></i>Tillbaka</p>
                     </div>
                 </div>
             )}

@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from 'react';
 import { ContentContext } from '../contexts/ContentContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import styles from '../css/Programs.module.css';
 
@@ -8,8 +8,11 @@ function CategoryPrograms(props) {
 
     const { category, categoryPrograms, getCategoryById, getProgramsByCategory } = useContext(ContentContext);
     const { categoryId } = props.match.params;
+
     const [showPrograms, setShowPrograms] = useState([]);
     const [number, setNumber] = useState(20);
+
+    const history = useHistory();
 
     useEffect(() => {
         getCategoryById(categoryId);
@@ -44,6 +47,7 @@ function CategoryPrograms(props) {
                     )}
                 </div>
             )}
+            <p onClick={() => history.goBack()} className={styles.goBack}><i className="fas fa-arrow-left"></i>Tillbaka</p>
         </div>
     );
 }

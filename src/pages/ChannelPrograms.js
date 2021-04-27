@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from 'react';
 import { ContentContext } from '../contexts/ContentContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import styles from '../css/Programs.module.css';
 
@@ -8,8 +8,11 @@ function ChannelPrograms(props) {
 
     const { channelPrograms, getProgramsByChannel } = useContext(ContentContext);
     const { channelId } = props.match.params;
+
     const [showPrograms, setShowPrograms] = useState([]);
     const [number, setNumber] = useState(20);
+
+    const history = useHistory();
 
     useEffect(() => {
         getProgramsByChannel(channelId);
@@ -41,6 +44,7 @@ function ChannelPrograms(props) {
                     <button className={styles.showMore} onClick={handleClick}>Visa fler program</button>
                 )}
             </div>
+            <p onClick={() => history.goBack()} className={styles.goBack}><i className="fas fa-arrow-left"></i>Tillbaka</p>
         </div>
     );
 }

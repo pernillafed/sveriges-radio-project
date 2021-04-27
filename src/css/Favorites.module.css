@@ -1,0 +1,36 @@
+.loggedInWrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.loggedOutWrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.loginLink {
+    width: 120px;
+    text-decoration: none;
+    background-color: #d40075;
+    color: white;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.loginLink:hover {
+    background-color: white;
+    color: #d40075;
+}
+
+.registerLink {
+    text-decoration: none;
+    color: #d40075;
+    margin-top: 5px;
+}

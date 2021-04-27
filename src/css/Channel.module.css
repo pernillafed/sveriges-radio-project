@@ -1,3 +1,15 @@
+.loggedInHeading {
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.loggedInHeading i {
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+    color: #d40075;
+}
+
 .contentWrapper {
     margin-top: 15px;
     display: grid;
@@ -36,8 +48,20 @@
     color: #d40075;
 }
 
+.goBack {
+    font-weight: bold;
+}
+
+.goBack i {
+    margin-right: 8px;
+}
+
 .scheduleContent {
-    margin: 15px 8px 10px 8px;
+    margin: 15px 8px;
+}
+
+.scheduleContent:nth-last-of-type(1) {
+    margin: 15px 8px 30px 8px;
 }
 
 .scheduleContent p {
