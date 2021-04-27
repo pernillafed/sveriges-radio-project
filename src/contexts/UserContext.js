@@ -27,12 +27,14 @@ const UserContextProvider = (props) => {
             body: JSON.stringify(user),
         });
         result = await result.json();
+        await whoami();
         return result;
     };
     
     const logout = async () => {
         let user = await fetch(`${prefixPath}/users/logout`);
         await user.json();
+        await whoami();
     }
 
     const register = async (user) => {

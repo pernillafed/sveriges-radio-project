@@ -29,9 +29,7 @@ function Login() {
         let result = await login(user);
         if (result.success) {
             history.push("/");
-        } else {
-            console.log(result);
-        }
+        };
     };
 
     return (
@@ -45,7 +43,7 @@ function Login() {
                 <button className={styles.formBtn}>Logga in</button>
             </form>
             <div className={styles.switchRouteLink}>
-                <Link to="/users/register" >Inte medlem? Registrera dig!</Link>
+                <Link to="/users/register">Inte medlem? Registrera dig!</Link>
             </div>
         </div>
     );

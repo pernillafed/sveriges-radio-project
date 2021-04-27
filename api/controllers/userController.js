@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3');
 const Encrypt = require('../Encrypt');
 const path = require('path');
 
-const db = new sqlite3.Database(path.join(__dirname, "../userDB.db"));
+const db = new sqlite3.Database(path.join(__dirname, "../../userDB.db"));
 
 // const getAllUsers = (req, res) => {
 //     let query = /*sql*/ ` SELECT * FROM users`;
