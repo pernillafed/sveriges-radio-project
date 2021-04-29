@@ -33,7 +33,7 @@ function App() {
             <Route exact path="/programs/:programId" component={Program} />
             <Route exact path="/categories" component={Categories} />
             <Route exact path="/categories/programs/:categoryId" component={CategoryPrograms} />
-            <Route exact path="/users/favorites" component={Favorites} />
+            <Route exact path="/users/favorites/:userId" component={Favorites} />
             <Route exact path="/users/login" component={Login} />
             <Route exact path="/users/register" component={Register} />
           </BrowserRouter>

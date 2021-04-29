@@ -1,17 +1,11 @@
 const sqlite3 = require('sqlite3');
 const Encrypt = require('../Encrypt');
 const path = require('path');
+const fetch = require('node-fetch');
+const json = 'format=json';
+const showAll = 'pagination=false';
 
 const db = new sqlite3.Database(path.join(__dirname, "../../userDB.db"));
-
-// const getAllUsers = (req, res) => {
-//     let query = /*sql*/ ` SELECT * FROM users`;
-//     db.all(query, [], (err, users) => {
-//         if (users.length > 0) {
-//             res.json(users);
-//         }
-//     });
-// };
 
 const whoami = (req, res) => {
     res.json(req.session.user || null);
@@ -70,9 +64,83 @@ const register = (req, res) => {
     });
 };
 
+const getUserFavoritesById = (req, res) => {
+    let query = /*sql*/ `
+    SELECT favorites.*
+    FROM users, favorites 
+    JOIN usersXfavorites
+    ON usersXfavorites.userId = users.userId
+    AND usersXfavorites.favoriteId = favorites.favoriteId
+    WHERE users.userId = $userId`;
+    let params = { $userId: req.params.userId };
+    db.all(query, params, (err, favorites) => {
+        if (favorites.length > 0) {
+            res.json(favorites);
+        } else {
+            res.status(404);
+        }
+    });
+};
+
+const addFavoriteToDB = (req, res) => {
+    let query = /*sql*/ `SELECT * FROM favorites WHERE name = $name`;
+    let params = { $name: req.body.name };
+    db.get(query, params, (err, result) => {
+        if (result) {
+            res.json({ error: "Favorite already exist" });
+        } else {
+            query = /*sql*/ `INSERT INTO favorites (${Object.keys(req.body).join(", ")})
+                VALUES (${Object.keys(req.body)
+                    .map((k) => "$" + k)
+                    .join(", ")})`;
+            let params = {};
+            for (let key in req.body) {
+                params["$" + key] = req.body[key];
+            };
+            db.run(query, params, function (err) {
+                res.json({ success: "Favorite added to DB", lastID: this.lastID });
+            });
+        }
+    });
+};
+
+const addFavoriteToId = (req, res) => {
+    let query = /*sql*/ `SELECT favoriteId FROM favorites WHERE name = $name`;
+    let params = { $name: req.body.name };
+    db.get(query, params, (err, result) => {
+        if (result) {
+            query = /*sql*/ `INSERT INTO usersXfavorites (userId, favoriteId) VALUES ($userId, $favoriteId)`;
+            params = {
+                $userId: req.params.userId,
+                $favoriteId: result.favoriteId
+            };
+            db.run(query, params, function (err) {
+                res.json({ success: "Favorite added successfully", lastID: this.lastID });
+            });
+        } else {
+            res.json({ error: "Favorite does not exist" });
+        }
+    });
+};
+
+const removeFavoriteFromId = (req, res) => {
+    let query = /*sql*/ `DELETE FROM usersXfavorites WHERE userId = $userId AND favoriteId = $favoriteId`;
+    let params = {
+            $userId: req.params.userId,
+            $favoriteId: req.body.favoriteId
+        };
+    db.run(query, params, function (err) {
+        res.json({ success: "Favorite has been removed", changes: this.changes });
+    });
+};
+
 module.exports = {
     whoami,
     login,
     logout,
-    register
+    register,
+    getUserFavoritesById,
+    addFavoriteToDB,
+    addFavoriteToId,
+    removeFavoriteFromId
 }

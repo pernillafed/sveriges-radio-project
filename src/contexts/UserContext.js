@@ -7,6 +7,7 @@ export const UserContext = createContext();
 const UserContextProvider = (props) => {
 
     const [loggedInUser, setLoggedInUser] = useState(null);
+    const [favorites, setFavorites] = useState(null);
 
     useEffect(() => {
         whoami();
@@ -49,12 +50,21 @@ const UserContextProvider = (props) => {
         return result;
     };
 
+    const getUserFavoritesById = async (userId) => {
+        let favorites = await fetch(`${prefixPath}/users/favorites/${userId}`);
+        favorites = await favorites.json();
+        await whoami();
+        setFavorites(favorites);
+    };
+
     const values = {
         loggedInUser,
+        favorites,
         login,
         logout,
-        register
-    }
+        register,
+        getUserFavoritesById
+    };
 
     return (
         <UserContext.Provider value={values}>

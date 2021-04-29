@@ -43,7 +43,7 @@ function Navbar() {
                     <NavLink onClick={handleLinkClick} to="/categories" className={styles.link}>Kategorier</NavLink>
                     {loggedInUser ? (
                         <div className={styles.loggedInLinks}>
-                            <NavLink onClick={handleLinkClick} to="/users/favorites" className={styles.link}>Mina favoriter</NavLink>
+                            <NavLink onClick={handleLinkClick} to={`/users/favorites/${loggedInUser.userId}`} className={styles.link}>Mina favoriter</NavLink>
                             <NavLink onClick={handleLogout} to="/" className={styles.link}>Logga ut</NavLink>
                         </div>  
                     ) : (

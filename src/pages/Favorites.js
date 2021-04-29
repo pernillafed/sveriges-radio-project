@@ -1,18 +1,44 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
 
 import styles from '../css/Favorites.module.css';
 
-function Favorites() {
+function Favorites(props) {
 
-    const { loggedInUser } = useContext(UserContext);
+    const { loggedInUser, favorites, getUserFavoritesById } = useContext(UserContext);
+    const { userId } = props.match.params;
+
+    useEffect(() => {
+        getUserFavoritesById(userId);
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div className="container">
             {loggedInUser ? (
                 <div className={styles.loggedInWrapper}>
                     <h2>Mina favoriter</h2>
+                    <div className="channels">
+                        <h3>Kanaler</h3>
+                        {favorites ? (
+                            favorites.filter(favorite => favorite.type === "Channel").map(favorite => (
+                                <p key={favorite.favoriteId}>{favorite.name}</p>
+                            ))
+                        ): (
+                            <p>Du har inga favoritmarkerade kanaler</p>
+                        )}
+                    </div>
+                    <div className="programs">
+                        <h3>Program</h3>
+                        {favorites ? (
+                            favorites.filter(favorite => favorite.type === "Program").map(favorite => (
+                                <p key={favorite.favoriteId}>{favorite.name}</p>
+                            ))
+                        ) : (
+                            <p>Du har inga favoritmarkerade program</p>
+                        )}
+                    </div>
                 </div>
             ) : (
                 <div className={styles.loggedOutWrapper}>
