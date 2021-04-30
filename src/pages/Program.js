@@ -8,7 +8,7 @@ import styles from '../css/Program.module.css';
 function Program(props) {
 
     const { program, getProgramById } = useContext(ContentContext);
-    const { loggedInUser } = useContext(UserContext);
+    const { loggedInUser, addFavoriteToDB, addFavoriteToId } = useContext(UserContext);
     const { programId } = props.match.params;
 
     const [inFavorites, setInFavorites] = useState(false);
@@ -20,8 +20,16 @@ function Program(props) {
         // eslint-disable-next-line
     }, []);
 
-    const addToFavorites = () => {
+    const addToFavorites = async () => {
         setInFavorites(true);
+        let newFavorite = {
+            favoriteId: programId,
+            type: "Program",
+            name: program.name,
+            img: program.programimage
+        };
+        await addFavoriteToDB(newFavorite);
+        await addFavoriteToId(loggedInUser.userId, { name: program.name });
     };
 
     const removeFromFavorites = () => {

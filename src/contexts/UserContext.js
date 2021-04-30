@@ -35,6 +35,7 @@ const UserContextProvider = (props) => {
     const logout = async () => {
         let user = await fetch(`${prefixPath}/users/logout`);
         await user.json();
+        setFavorites(null);
         await whoami();
     }
 
@@ -53,17 +54,56 @@ const UserContextProvider = (props) => {
     const getUserFavoritesById = async (userId) => {
         let favorites = await fetch(`${prefixPath}/users/favorites/${userId}`);
         favorites = await favorites.json();
-        await whoami();
         setFavorites(favorites);
+    };
+
+    const addFavoriteToDB = async (favorite) => {
+        let result = await fetch(`${prefixPath}/users/favorites`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(favorite)
+        });
+        result = await result.json();
+        return result;
+    };
+
+    const addFavoriteToId = async (userId, favoriteName) => {
+        let result = await fetch(`${prefixPath}/users/favorites/${userId}`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(favoriteName)
+        });
+        result = await result.json();
+        return result;
+    };
+
+    const removeFavoriteFromId = async (userId, favoriteId) => {
+        let result = await fetch(`${prefixPath}/users/favorites/${userId}`, {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(favoriteId)
+        });
+        result = result.json();
+        return result;
     };
 
     const values = {
         loggedInUser,
         favorites,
+        whoami,
         login,
         logout,
         register,
-        getUserFavoritesById
+        getUserFavoritesById,
+        addFavoriteToDB,
+        addFavoriteToId,
+        removeFavoriteFromId
     };
 
     return (

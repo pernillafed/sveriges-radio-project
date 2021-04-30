@@ -8,7 +8,7 @@ import styles from '../css/Channel.module.css';
 function Channel(props) {
 
     const { channel, getChannelById } = useContext(ContentContext);
-    const { loggedInUser } = useContext(UserContext);
+    const { loggedInUser, favorites, whoami, getUserFavoritesById, addFavoriteToDB, addFavoriteToId, removeFavoriteFromId } = useContext(UserContext);
     const { channelId } = props.match.params;
 
     const [inFavorites, setInFavorites] = useState(false);
@@ -20,12 +20,27 @@ function Channel(props) {
         // eslint-disable-next-line
     }, []);
 
-    const addToFavorites = () => {
+    useEffect(() => {
+        if (loggedInUser) {
+            console.log("In channel: ", loggedInUser);
+        }
+    }, []);
+
+    const addToFavorites = async () => {
         setInFavorites(true);
+        let newFavorite = {
+            favoriteId: channelId,
+            type: "Channel",
+            name: channel.name,
+            img: channel.image
+        };
+        await addFavoriteToDB(newFavorite);
+        await addFavoriteToId(loggedInUser.userId, { name: channel.name });
     };
 
-    const removeFromFavorites = () => {
+    const removeFromFavorites = async () => {
         setInFavorites(false);
+        await removeFavoriteFromId(loggedInUser.userId, { favoriteId: channelId });
     };
 
     return (

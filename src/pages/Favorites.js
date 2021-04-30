@@ -23,7 +23,7 @@ function Favorites(props) {
                         <h3>Kanaler</h3>
                         {favorites ? (
                             favorites.filter(favorite => favorite.type === "Channel").map(favorite => (
-                                <p key={favorite.favoriteId}>{favorite.name}</p>
+                                <img src={favorite.img} alt={favorite.name} key={favorite.favoriteId} />
                             ))
                         ): (
                             <p>Du har inga favoritmarkerade kanaler</p>
@@ -33,7 +33,7 @@ function Favorites(props) {
                         <h3>Program</h3>
                         {favorites ? (
                             favorites.filter(favorite => favorite.type === "Program").map(favorite => (
-                                <p key={favorite.favoriteId}>{favorite.name}</p>
+                                <img src={favorite.img} alt={favorite.name} key={favorite.favoriteId} />
                             ))
                         ) : (
                             <p>Du har inga favoritmarkerade program</p>
