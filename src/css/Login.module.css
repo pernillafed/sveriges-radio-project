@@ -23,6 +23,13 @@
     box-shadow: 0 0 8px #d400757e;
 }
 
+.inputForm p {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #f70000;
+    margin-top: 8px;
+}
+
 .formBtn {
     color: white;
     margin: 25px 0;
@@ -50,4 +57,41 @@
     text-decoration: none;
     color: #d40075;
     font-weight: bold;
+}
+
+.popupBackground {
+    background-color: #222222d3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: white;
+    padding: 30px 45px 40px 45px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 250px;
+    border-radius: 5px;
+}
+
+.popup p {
+    margin-bottom: 15px;
+}
+
+.popup a {
+    color: white;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    font-size: 1rem;
+    background-color: #d40075;
+    text-decoration: none;
 }

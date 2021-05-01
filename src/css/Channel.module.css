@@ -1,3 +1,7 @@
+.loggedInHeadingWrapper {
+    position: relative;
+}
+
 .loggedInHeading {
     display: grid;
     grid-template-columns: 90% 10%;
@@ -7,7 +11,24 @@
     justify-self: center;
     align-self: center;
     font-size: 1.5rem;
-    color: #d40075;
+    color: #222;
+    cursor: pointer;
+}
+
+.loggedInHeading i:hover {
+    color: #d40075
+}
+
+.addedInformation {
+    position: absolute;
+    top: 2px;
+    right: 12%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    text-align: center;
 }
 
 .contentWrapper {

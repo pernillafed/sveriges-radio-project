@@ -11,7 +11,8 @@ function Program(props) {
     const { loggedInUser, addFavoriteToDB, addFavoriteToId } = useContext(UserContext);
     const { programId } = props.match.params;
 
-    const [inFavorites, setInFavorites] = useState(false);
+    const [showFavoriteAdded, setShowFavoriteAdded] = useState(false);
+    const [showAlreadyAdded, setShowAlreadyAdded] = useState(false);
 
     const history = useHistory();
 
@@ -21,7 +22,6 @@ function Program(props) {
     }, []);
 
     const addToFavorites = async () => {
-        setInFavorites(true);
         let newFavorite = {
             favoriteId: programId,
             type: "Program",
@@ -29,11 +29,14 @@ function Program(props) {
             img: program.programimage
         };
         await addFavoriteToDB(newFavorite);
-        await addFavoriteToId(loggedInUser.userId, { name: program.name });
-    };
-
-    const removeFromFavorites = () => {
-        setInFavorites(false);
+        let result = await addFavoriteToId(loggedInUser.userId, { name: program.name });
+        if (result.success) {
+            setShowFavoriteAdded(true);
+            setShowAlreadyAdded(false);
+        } else {
+            setShowAlreadyAdded(true);
+            setShowFavoriteAdded(false);
+        };
     };
 
     return (
@@ -43,13 +46,13 @@ function Program(props) {
                     {!loggedInUser ? (
                         <h2>{program.name}</h2>
                     ) : (
-                        <div className={styles.loggedInHeading}>
-                            <h2>{program.name}</h2>
-                            {!inFavorites ? (
-                                <i className="far fa-heart" onClick={addToFavorites}></i>
-                            ) : (
-                                <i className="fas fa-heart" onClick={removeFromFavorites}></i>
-                            )}
+                        <div className={styles.loggedInHeadingWrapper}>
+                            <div className={styles.loggedInHeading}>
+                                <h2>{program.name}</h2>
+                                <i className="fas fa-heart" onClick={addToFavorites}></i>
+                            </div>
+                            {showFavoriteAdded && <div className={styles.addedInformation}>Tillagd i favoriter</div>}
+                            {showAlreadyAdded && <div className={styles.addedInformation}>Redan tillagd</div>}
                         </div>
                     )}
                     <div className={styles.contentWrapper}>

@@ -8,10 +8,11 @@ import styles from '../css/Channel.module.css';
 function Channel(props) {
 
     const { channel, getChannelById } = useContext(ContentContext);
-    const { loggedInUser, favorites, whoami, getUserFavoritesById, addFavoriteToDB, addFavoriteToId, removeFavoriteFromId } = useContext(UserContext);
+    const { loggedInUser, addFavoriteToDB, addFavoriteToId } = useContext(UserContext);
     const { channelId } = props.match.params;
 
-    const [inFavorites, setInFavorites] = useState(false);
+    const [showFavoriteAdded, setShowFavoriteAdded] = useState(false);
+    const [showAlreadyAdded, setShowAlreadyAdded] = useState(false);
 
     const history = useHistory();
 
@@ -20,14 +21,7 @@ function Channel(props) {
         // eslint-disable-next-line
     }, []);
 
-    useEffect(() => {
-        if (loggedInUser) {
-            console.log("In channel: ", loggedInUser);
-        }
-    }, []);
-
     const addToFavorites = async () => {
-        setInFavorites(true);
         let newFavorite = {
             favoriteId: channelId,
             type: "Channel",
@@ -35,12 +29,14 @@ function Channel(props) {
             img: channel.image
         };
         await addFavoriteToDB(newFavorite);
-        await addFavoriteToId(loggedInUser.userId, { name: channel.name });
-    };
-
-    const removeFromFavorites = async () => {
-        setInFavorites(false);
-        await removeFavoriteFromId(loggedInUser.userId, { favoriteId: channelId });
+        let result = await addFavoriteToId(loggedInUser.userId, { name: channel.name });
+        if (result.success) {
+            setShowFavoriteAdded(true);
+            setShowAlreadyAdded(false);
+        } else {
+            setShowAlreadyAdded(true);
+            setShowFavoriteAdded(false);
+        };
     };
 
     return (
@@ -50,13 +46,13 @@ function Channel(props) {
                     {!loggedInUser ? (
                         <h2>{channel.name}</h2>
                     ) : (
-                        <div className={styles.loggedInHeading}>
-                            <h2>{channel.name}</h2>
-                            {!inFavorites ? (
-                                <i className="far fa-heart" onClick={addToFavorites}></i>
-                            ) : (
-                                <i className="fas fa-heart" onClick={removeFromFavorites}></i>
-                            )}
+                        <div className={styles.loggedInHeadingWrapper}>
+                            <div className={styles.loggedInHeading}>
+                                <h2>{channel.name}</h2>
+                                <i className="fas fa-heart" onClick={addToFavorites}></i>
+                            </div>
+                            {showFavoriteAdded && <div className={styles.addedInformation}>Tillagd i favoriter</div>}
+                            {showAlreadyAdded && <div className={styles.addedInformation}>Redan tillagd</div>}
                         </div>
                     )}
                     <div className={styles.contentWrapper}>

@@ -115,7 +115,11 @@ const addFavoriteToId = (req, res) => {
                 $favoriteId: result.favoriteId
             };
             db.run(query, params, function (err) {
-                res.json({ success: "Favorite added successfully", lastID: this.lastID });
+                if (err) {
+                    res.json({ error: "Could not add favorite" });
+                } else {
+                    res.json({ success: "Favorite added successfully", lastID: this.lastID });
+                }
             });
         } else {
             res.json({ error: "Favorite does not exist" });

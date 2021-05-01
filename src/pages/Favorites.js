@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
 
@@ -6,39 +6,71 @@ import styles from '../css/Favorites.module.css';
 
 function Favorites(props) {
 
-    const { loggedInUser, favorites, getUserFavoritesById } = useContext(UserContext);
+    const { loggedInUser, favorites, getUserFavoritesById, removeFavoriteFromId } = useContext(UserContext);
     const { userId } = props.match.params;
+
+    const [showFavorites, setShowFavorites] = useState(false);
 
     useEffect(() => {
         getUserFavoritesById(userId);
         // eslint-disable-next-line
     }, []);
 
+    useEffect(() => {
+        if (favorites) {
+            setShowFavorites(true);
+        };
+    }, [favorites]);
+
+    const handleClick = async (e) => {
+        if (favorites.length > 1) {
+            await removeFavoriteFromId(userId, { favoriteId: e.target.id });
+            getUserFavoritesById(userId);
+        } else {
+            await removeFavoriteFromId(userId, { favoriteId: e.target.id });
+            setShowFavorites(false);
+        };
+    };
+
     return (
         <div className="container">
             {loggedInUser ? (
-                <div className={styles.loggedInWrapper}>
+                <div>
                     <h2>Mina favoriter</h2>
-                    <div className="channels">
-                        <h3>Kanaler</h3>
-                        {favorites ? (
-                            favorites.filter(favorite => favorite.type === "Channel").map(favorite => (
-                                <img src={favorite.img} alt={favorite.name} key={favorite.favoriteId} />
-                            ))
-                        ): (
-                            <p>Du har inga favoritmarkerade kanaler</p>
-                        )}
-                    </div>
-                    <div className="programs">
-                        <h3>Program</h3>
-                        {favorites ? (
-                            favorites.filter(favorite => favorite.type === "Program").map(favorite => (
-                                <img src={favorite.img} alt={favorite.name} key={favorite.favoriteId} />
-                            ))
-                        ) : (
-                            <p>Du har inga favoritmarkerade program</p>
-                        )}
-                    </div>
+                    {showFavorites ? (
+                        <div className={styles.loggedInWrapper}>
+                            <div className={styles.contentWrappers}>
+                                <h3>Kanaler</h3>
+                                <div className={styles.favoriteObjects}>
+                                    {favorites.filter(favorite => favorite.type === "Channel").map(favorite => (
+                                        <div key={favorite.favoriteId}  className={styles.favoriteObject}>
+                                            <Link to={`/channels/${favorite.favoriteId}`}>
+                                                <img src={favorite.img} alt={favorite.name} />
+                                            </Link>
+                                            <i className="fas fa-times-circle" id={favorite.favoriteId} onClick={handleClick}></i>
+                                            <p>{favorite.name}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className={styles.contentWrappers}>
+                                <h3>Program</h3>
+                                <div className={styles.favoriteObjects}>
+                                    {favorites.filter(favorite => favorite.type === "Program").map(favorite => (
+                                        <div key={favorite.favoriteId}  className={styles.favoriteObject}>
+                                            <Link to={`/programs/${favorite.favoriteId}`}>
+                                                <img src={favorite.img} alt={favorite.name} />
+                                            </Link>
+                                            <i className="fas fa-times-circle" id={favorite.favoriteId} onClick={handleClick}></i>
+                                            <p>{favorite.name}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <p className={styles.noFavorites}>Du har inga favoritmarkerade kanaler eller program</p>
+                    )}
                 </div>
             ) : (
                 <div className={styles.loggedOutWrapper}>

@@ -1,7 +1,54 @@
 .loggedInWrapper {
+    margin-top: 15px;
     display: grid;
     grid-template-columns: 100%;
-    row-gap: 10px;
+    row-gap: 5px;
+}
+
+.contentWrappers {
+    margin: 20px 0 5px 0;
+}
+
+.favoriteObjects {
+    display: grid;
+    grid-template-columns: 28% 28% 28%;
+    column-gap: 8%;
+    row-gap: 20px;
+    margin: 20px 0 3px 0;
+}
+
+.favoriteObject {
+    position: relative;
+}
+
+.favoriteObject a img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.favoriteObject i {
+    justify-self: center;
+    font-size: 1.8rem;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.favoriteObject i:hover {
+    color: #d40075;
+}
+
+.favoriteObject p {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.noFavorites {
+    margin-top: 15px;
 }
 
 .loggedOutWrapper {
