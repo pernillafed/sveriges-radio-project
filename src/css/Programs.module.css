@@ -44,6 +44,7 @@
 
 .goBack {
     font-weight: bold;
+    cursor: pointer;
 }
 
 .goBack i {
