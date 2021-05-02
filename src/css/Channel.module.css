@@ -88,3 +88,58 @@
 .scheduleContent p {
     color: #d40075;
 }
+
+@media (min-width: 768px) {
+
+    .addedInformation {
+        top: 7px;
+        right: 10%;
+    }
+
+    .contentWrapper {
+        margin-top: 30px;
+    }
+
+    .channelInformation {
+        grid-template-columns: 30% 65%;
+        column-gap: 5%;
+        align-items: center;
+    }
+
+    .goBack {
+        margin-top: 70px;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .addedInformation {
+        right: 9%;
+    }
+
+    .contentWrapper {
+        margin-top: 35px;
+    }
+
+    .goBack {
+        margin-top: 100px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .contentWrapper {
+        grid-template-columns: 64% 30%;
+        column-gap: 6%;
+    }
+
+    .links {
+        grid-template-columns: 100%;
+        row-gap: 10px;
+        align-items: center;
+        padding: 30px 0;
+    }
+
+}

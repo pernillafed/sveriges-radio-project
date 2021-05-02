@@ -22,3 +22,36 @@ h1, h2, h3 {
     margin: 30px auto;
     font-family: 'Open Sans';
 }
+
+@media (min-width: 768px) {
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        margin: 45px auto;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .container {
+        margin: 60px auto;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        width: 65%;
+        margin: 60px auto;
+    }
+
+}

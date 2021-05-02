@@ -30,3 +30,42 @@
     cursor: pointer;
     color: #d40075;
 }
+
+@media (min-width: 768px) {
+
+    .channelWrapper {
+        margin-top: 30px;
+        row-gap: 25px;
+    }
+
+    .showMore {
+        width: 200px;
+        justify-self: center;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .channelWrapper {
+        margin-top: 35px;
+        row-gap: 30px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .channelWrapper {
+        grid-template-columns: 18% 18% 18% 18% 18%;
+        column-gap: 2%;
+        row-gap: 10px;
+        justify-content: center;
+    }
+
+    .showMore {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+}

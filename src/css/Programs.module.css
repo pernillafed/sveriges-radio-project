@@ -49,3 +49,59 @@
 .goBack i {
     margin-right: 8px;
 }
+
+@media (min-width: 768px) {
+
+    .programWrapper {
+        margin: 30px 0 15px 0;
+    }
+
+    .showMore {
+        width: 200px;
+        justify-self: center;
+    }
+
+    .goBack {
+        margin-top: 30px;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .programWrapper {
+        margin-top: 35px;
+    }
+
+    .goBack {
+        margin-top: 50px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .programWrapper {
+        grid-template-columns: 23% 23% 23% 23%;
+        column-gap: 2%;
+        row-gap: 25px;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .program {
+        grid-template-columns: 100%;
+        row-gap: 5px;
+        text-align: center;
+    }
+
+    .program img {
+        border-radius: 5px;
+    }
+
+    .showMore {
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+
+}

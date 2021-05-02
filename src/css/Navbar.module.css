@@ -18,6 +18,10 @@
     color: #d40075;
 }
 
+.navLinks {
+    display: none;
+}
+
 .menu {
     cursor: pointer;
     font-size: 3rem;
@@ -66,6 +70,11 @@
     color: white;
 }
 
+.loggedInLinks a:hover {
+    background-color: white;
+    color: #d40075;
+}
+
 .loginLink {
     background-color: #d40075;
     color: white;
@@ -81,4 +90,76 @@
 
 .pink {
     color: #d40075;
+}
+
+@media (min-width: 768px) {
+
+    .navbar {
+        grid-template-columns: 85% 15%;
+        padding: 5px 15px 0 20px;
+    }
+
+    .links {
+        width: 70%;
+        justify-self: center;
+        column-gap: 3%;
+        row-gap: 15%;
+        padding: 15px 0 45px 0;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .navbar {
+        grid-template-columns: 90% 10%;
+    }
+
+    .links {
+        width: 100%;
+        grid-template-columns: 15% 15% 15% 15% 32%;
+        column-gap: 2%;
+        padding: 15px 0 20px 0;
+        align-items: end;
+    }
+
+    .loggedInLinks {
+        grid-column-start: 5;
+        grid-column-end: 6;
+        grid-template-columns: 47% 47%;
+        column-gap: 6%;
+        margin: 0;
+        width: 100%;
+    }
+
+    .loginLink {
+        grid-column-start: 5;
+        grid-column-end: 6;
+        margin: 0;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .navbar {
+        grid-template-columns: 25% 75%;
+    }
+    
+    .navLinks {
+        display: grid;
+        grid-template-columns: 14% 14% 14% 14% 36%;
+        column-gap: 2%;
+        align-items: end;
+        margin-bottom: 16px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .links {
+        display: none;
+    }
+
 }

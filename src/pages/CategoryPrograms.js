@@ -34,17 +34,19 @@ function CategoryPrograms(props) {
     return (
         <div className="container">
             {category && (
-                <div className={styles.programWrapper}>
+                <div>
                     <h2>{category.name}</h2>
-                    {categoryPrograms && showPrograms.map(program => (
-                        <Link to={`/programs/${program.id}`} key={program.id} className={styles.program}>
-                            <img src={program.programimage} alt={program.name} />
-                            <h3>{program.name}</h3>
-                        </Link>
-                    ))}
-                    {categoryPrograms && showPrograms.length < categoryPrograms.length && (
-                        <button className={styles.showMore} onClick={handleClick}>Visa fler program</button>
-                    )}
+                    <div className={styles.programWrapper}>
+                        {categoryPrograms && showPrograms.map(program => (
+                            <Link to={`/programs/${program.id}`} key={program.id} className={styles.program}>
+                                <img src={program.programimage} alt={program.name} />
+                                <h3>{program.name}</h3>
+                            </Link>
+                        ))}
+                        {categoryPrograms && showPrograms.length < categoryPrograms.length && (
+                            <button className={styles.showMore} onClick={handleClick}>Visa fler program</button>
+                        )}
+                    </div>
                 </div>
             )}
             <p onClick={() => history.goBack()} className={styles.goBack}><i className="fas fa-arrow-left"></i>Tillbaka</p>

@@ -34,6 +34,20 @@ function Navbar() {
     return (
         <div className={styles.navbar} ref={navRef}>
             <h1><NavLink to="/" onClick={handleLinkClick}>radio<span className={styles.dot}>.</span></NavLink></h1>
+            <div className={styles.navLinks}>
+                <NavLink onClick={handleLinkClick} to="/" className={styles.link}>Startsida</NavLink>
+                <NavLink onClick={handleLinkClick} to="/channels" className={styles.link}>Kanaler</NavLink>
+                <NavLink onClick={handleLinkClick} to="/programs" className={styles.link}>Program</NavLink>
+                <NavLink onClick={handleLinkClick} to="/categories" className={styles.link}>Kategorier</NavLink>
+                {loggedInUser ? (
+                    <div className={styles.loggedInLinks}>
+                        <NavLink onClick={handleLinkClick} to={`/users/whoami`} className={styles.link}>Min sida</NavLink>
+                        <NavLink onClick={handleLogout} to="/" className={styles.link}>Logga ut</NavLink>
+                    </div>  
+                ) : (
+                    <NavLink onClick={handleLinkClick} to="/users/login" className={`${styles.link} ${styles.loginLink}`}>Logga in / Registrera</NavLink>
+                )}
+            </div>
             <i onClick={handleClick} className={`fas fa-bars ${styles.menu} ${showDropdown && styles.pink}`}></i>
             {showDropdown && (
                 <div className={styles.links}>

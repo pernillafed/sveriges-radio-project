@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import HomePageSection from "../components/HomePageSection";
 import { ContentContext } from "../contexts/ContentContext";
 import { UserContext } from '../contexts/UserContext';
 
@@ -19,34 +20,14 @@ function Home() {
                     <div className={styles.homeChannels}>
                         {channels && channels.slice(0, 3).map(channel => (
                             <Link to={`/channels/${channel.id}`} key={channel.id} className={styles.homeChannel}>
-                                <img  src={channel.image} alt={channel.name} />
+                                <img src={channel.image} alt={channel.name} />
                             </Link>
                         ))}
                     </div>
                     <Link to="/channels" className={styles.goTo}>Gå vidare till alla kanaler <i className={`fas fa-arrow-right ${styles.arrowRight}`}></i></Link>
                 </div>
-                <div className={styles.contentWrappers}>
-                    <h3>Program</h3>
-                    <div className={styles.homePrograms}>
-                        {programs && programs.slice(0, 4).map(program => (
-                            <Link to={`/programs/${program.id}`} key={program.id} className={styles.homeProgram}>
-                                {program.name}
-                            </Link>
-                        ))}
-                    </div>
-                    <Link to="/programs" className={styles.goTo}>Gå vidare till alla program <i className={`fas fa-arrow-right ${styles.arrowRight}`}></i></Link>
-                </div>
-                <div className={styles.contentWrappers}>
-                    <h3>Kategorier</h3>
-                    <div className={styles.homeCategories}>
-                        {categories && categories.slice(0, 4).map(category => (
-                            <Link to={`/categories/programs/${category.id}`} key={category.id} className={styles.homeCategory}>
-                                {category.name}
-                            </Link>
-                        ))}
-                    </div>
-                    <Link to="/categories" className={styles.goTo}>Gå vidare till alla kategorier <i className={`fas fa-arrow-right ${styles.arrowRight}`}></i></Link>
-                </div>
+                <HomePageSection type={programs} idRoute={"/programs"} route={"/programs"} title={"Program"} />
+                <HomePageSection type={categories} idRoute={"/categories/programs"} route={"/categories"} title={"Kategorier"} />
             </div>
         </div>
     );
