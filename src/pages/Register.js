@@ -12,6 +12,41 @@ function Register() {
     const { loggedInUser, logout, register } = useContext(UserContext);
 
     const [showPopup, setShowPopup] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleFirstNameChange = (e) => {
+        setFirstName(e.target.value);
+    };
+    const handleLastNameChange = (e) => {
+        setLastName(e.target.value);
+    };
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        setError("");
+    };
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let newUser = {
+            firstName,
+            lastName,
+            email,
+            password
+        };
+        let result = await register(newUser);
+        if (result.success) {
+            setShowPopup(true);
+        } else {
+            setError("Denna email används redan");
+        }
+    };
 
     const handleLogout = () => {
         logout();
@@ -22,12 +57,14 @@ function Register() {
             {!loggedInUser ? (
                 <div>
                     <RegisterEditForm
-                        formFunction={register}
-                        setShowPopup={setShowPopup}
-                        errorMsg={"Användare med denna email finns redan"}
                         title={"Registrera"}
                         btnText={"Registrera"}
-                        loggedInUser={null}
+                        handleFirstNameChange={handleFirstNameChange}
+                        handleLastNameChange={handleLastNameChange}
+                        handleEmailChange={handleEmailChange}
+                        handlePasswordChange={handlePasswordChange}
+                        handleSubmit={handleSubmit}
+                        error={error}
                     />
                     <div className={styles.switchRouteLink}>
                         <Link to="/users/login">Redan medlem? Logga in!</Link>

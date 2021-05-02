@@ -1,0 +1,93 @@
+.contentWrapper {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 30px;
+}
+
+.contactWrapper {
+    margin: 15px 0 5px 0;
+}
+
+.contactInformation {
+    margin: 15px 0 25px 0;
+}
+
+.contactInformation h4 {
+    margin: 10px 0 3px 0;
+}
+
+.editLink {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    text-align: center;
+}
+
+.editLink:hover {
+    color: #d40075;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+    margin-top: 30px;
+}
+
+.links a {
+    width: 100%;
+    justify-self: center;
+}
+
+.btnLink {
+    text-decoration: none;
+    background-color: #d40075;
+    color: white;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    text-align: center;
+}
+
+.btnLink:hover {
+    background-color: white;
+    color: #d40075;
+}
+
+.loggedOutWrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 10px;
+}
+
+.loginLink {
+    width: 120px;
+    text-decoration: none;
+    background-color: #d40075;
+    color: white;
+    font-weight: bold;
+    font-family: 'Merriweather';
+    padding: 8px 16px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px #999;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.loginLink:hover {
+    background-color: white;
+    color: #d40075;
+}
+
+.registerLink {
+    text-decoration: none;
+    color: #d40075;
+    margin-top: 5px;
+}

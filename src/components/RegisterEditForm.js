@@ -1,52 +1,6 @@
-import { useEffect, useState } from 'react';
 import styles from '../css/Login.module.css';
 
-function RegisterEditForm({ formFunction, setShowPopup, errorMsg, title, btnText, loggedInUser }) {
-
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        if (loggedInUser) {
-            setFirstName(loggedInUser.title);
-            setLastName(loggedInUser.author);
-            setEmail(loggedInUser.snippet);
-            setPassword(loggedInUser.content);
-        }
-    }, [loggedInUser]);
-
-    const handleFirstNameChange = (e) => {
-        setFirstName(e.target.value);
-    };
-    const handleLastNameChange = (e) => {
-        setLastName(e.target.value);
-    };
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-        setError("");
-    };
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let newUser = {
-            firstName,
-            lastName,
-            email,
-            password
-        };
-        let result = await formFunction(newUser);
-        if (result.success) {
-            setShowPopup(true);
-        } else {
-            setError(errorMsg);
-        }
-    };
+function RegisterEditForm({ title, btnText, handleFirstNameChange, handleLastNameChange, handleEmailChange, handlePasswordChange, handleSubmit, error }) {
 
     return (
         <div>

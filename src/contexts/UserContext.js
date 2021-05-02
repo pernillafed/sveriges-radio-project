@@ -13,6 +13,9 @@ const UserContextProvider = (props) => {
         whoami();
     }, []);
 
+
+    // User
+
     const whoami = async () => {
         let user = await fetch(`${prefixPath}/users/whoami`);
         user = await user.json();
@@ -50,6 +53,21 @@ const UserContextProvider = (props) => {
         result = await result.json();
         return result;
     };
+
+    const edit = async (userId, newUser) => {
+        let result = await fetch(`${prefixPath}/users/edit/${userId}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+        });
+        result = await result.json();
+        return result;
+    };
+
+
+    // Favorites
 
     const getUserFavoritesById = async (userId) => {
         let favorites = await fetch(`${prefixPath}/users/favorites/${userId}`);
@@ -100,6 +118,7 @@ const UserContextProvider = (props) => {
         login,
         logout,
         register,
+        edit,
         getUserFavoritesById,
         addFavoriteToDB,
         addFavoriteToId,

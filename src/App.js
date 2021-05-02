@@ -16,6 +16,8 @@ import CategoryPrograms from './pages/CategoryPrograms';
 import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MyPage from './pages/MyPage';
+import Edit from './pages/Edit';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
             <Route exact path="/users/favorites/:userId" component={Favorites} />
             <Route exact path="/users/login" component={Login} />
             <Route exact path="/users/register" component={Register} />
+            <Route exact path="/users/whoami" component={MyPage} />
+            <Route exact path="/users/edit/:userId" component={Edit} />
           </BrowserRouter>
         </ContentContext>
       </UserContext>

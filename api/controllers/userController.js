@@ -81,9 +81,14 @@ const edit = (req, res) => {
     db.run(query, params, function (err) {
         if (err) {
             res.status(400).json({ error: "Email is already in use"});
-            return;
+        } else {
+            query = /*sql */ `SELECT * FROM users WHERE userId = $userId`;
+            params = {$userId: req.params.userId};
+            db.get(query, params, (err, user) => {
+                req.session.user = user;
+                res.json({ success: "User updated"});
+            });
         }
-        res.json({ success: "User update successfull", changes: this.changes });
     });
 };
 
