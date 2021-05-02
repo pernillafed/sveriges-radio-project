@@ -1,11 +1,11 @@
 const sqlite3 = require('sqlite3');
 const Encrypt = require('../Encrypt');
 const path = require('path');
-const fetch = require('node-fetch');
-const json = 'format=json';
-const showAll = 'pagination=false';
 
 const db = new sqlite3.Database(path.join(__dirname, "../../userDB.db"));
+
+
+// User
 
 const whoami = (req, res) => {
     res.json(req.session.user || null);
@@ -63,6 +63,32 @@ const register = (req, res) => {
         }
     });
 };
+
+const edit = (req, res) => {
+    let userToEdit = req.body;
+    userToEdit.password = Encrypt.encrypt(userToEdit.password);
+    let query = /*sql*/ `
+        UPDATE users
+        SET firstName = $firstName, lastName = $lastName, email = $email, password = $password
+        WHERE userId = $userId`;
+    let params = {
+        $firstName: userToEdit.firstName,
+        $lastName: userToEdit.lastName,
+        $email: userToEdit.email,
+        $password: userToEdit.password,
+        $userId: req.params.userId,
+    };
+    db.run(query, params, function (err) {
+        if (err) {
+            res.status(400).json({ error: "Email is already in use"});
+            return;
+        }
+        res.json({ success: "User update successfull", changes: this.changes });
+    });
+};
+
+
+// Favorites
 
 const getUserFavoritesById = (req, res) => {
     let query = /*sql*/ `
@@ -143,6 +169,7 @@ module.exports = {
     login,
     logout,
     register,
+    edit,
     getUserFavoritesById,
     addFavoriteToDB,
     addFavoriteToId,

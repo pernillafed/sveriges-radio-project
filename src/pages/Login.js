@@ -6,7 +6,7 @@ import styles from '../css/Login.module.css';
 
 function Login() {
 
-    const { login } = useContext(UserContext);
+    const { loggedInUser, login, logout } = useContext(UserContext);
 
     const history = useHistory();
 
@@ -37,20 +37,33 @@ function Login() {
         };
     };
 
+    const handleLogout = () => {
+        logout();
+    };
+
     return (
         <div className="container">
-            <h2>Logga in</h2>
-            <form className={styles.inputForm} onSubmit={handleSubmit}>
-                <div className={styles.inputFields}>
-                    <input type="email" placeholder="email" onChange={handleEmailChange} required />
-                    <input type="password" placeholder="lösenord" onChange={handlePasswordChange} required />
+            {!loggedInUser ? (
+                <div>
+                    <h2>Logga in</h2>
+                    <form className={styles.inputForm} onSubmit={handleSubmit}>
+                        <div className={styles.inputFields}>
+                            <input type="email" placeholder="email" onChange={handleEmailChange} required />
+                            <input type="password" placeholder="lösenord" onChange={handlePasswordChange} required />
+                        </div>
+                        {error && <p>{error}</p>}
+                        <button className={styles.formBtn}>Logga in</button>
+                    </form>
+                    <div className={styles.switchRouteLink}>
+                        <Link to="/users/register">Inte medlem? Registrera dig!</Link>
+                    </div>
                 </div>
-                {error && <p>{error}</p>}
-                <button className={styles.formBtn}>Logga in</button>
-            </form>
-            <div className={styles.switchRouteLink}>
-                <Link to="/users/register">Inte medlem? Registrera dig!</Link>
-            </div>
+            ) : (
+                <div>
+                    <h2 className={styles.logoutHeading}>Du måste logga ut för att kunna logga in på nytt!</h2>
+                    <Link onClick={handleLogout} to="/users/login" className={styles.toLogin}>Logga ut</Link>
+                </div>
+            )}
         </div>
     );
 }
